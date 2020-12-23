@@ -47,5 +47,7 @@
   CEM (Component_element\_\_modifier)
 
   Component: component name(in PascalCase)
+
   element: prefixed with underscore '\_' and followed by element name (in camelCase)
+
   modifier: prefixed with double underscore '\_\_' and followed by modifier name(in camelCase)
