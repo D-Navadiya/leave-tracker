@@ -45,6 +45,6 @@
 - **Variable Names** : almost always camelCase (e.g. const registerUserData = {}), of course except the React Elements as they have to be PascalCase always.
 - **Style Names** : similar to BEM-web, we tweak it as CEM.
   CEM (Component_element\_\_modifier)
-- Component: component name(in PascalCase)
-- element: prefixed with underscore '\_' and followed by element name (in camelCase)
-- modifier: prefixed with double underscore '\_\_' and followed by modifier name(in camelCase)
+  Component: component name(in PascalCase)
+  element: prefixed with underscore '\_' and followed by element name (in camelCase)
+  modifier: prefixed with double underscore '\_\_' and followed by modifier name(in camelCase)
