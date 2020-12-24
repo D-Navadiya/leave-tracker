@@ -39,7 +39,7 @@
 
 1. Naming conventions
 
-- **Folder Names** : separated words with dashes '-' (e.g. custom-drawer-content)
+- **Folder Names** : lowercase, separating words with dashes '-' (e.g. custom-drawer-content)
 
 - **File Names** : PascalCase (e.g. CustomDrawerContent.jsx | except index.js, stays the same)
 - **Variable Names** : almost always camelCase (e.g. const registerUserData = {}), of course except the React Elements as they have to be PascalCase always.
