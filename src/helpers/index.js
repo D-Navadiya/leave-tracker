@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import merge from 'lodash/merge';
 import { generalConsts } from 'src/constants/GenericConstants';
+import { leaveFieldKeys } from 'src/constants/LeaveConstants';
 
 export const styleCreator = (styles) => StyleSheet.create(styles);
 
@@ -39,3 +40,22 @@ export const extractStorageKeysOnly = (configuredFields, exceptionArray = []) =>
   configuredFields
     .map((field) => field.key)
     .filter((key) => !exceptionArray.includes(key));
+
+export const checkLeaveInterference = (userLeave, state) => {
+  const userLeaveStartISODate = userLeave[leaveFieldKeys.startDate];
+  const userLeaveEndISODate = userLeave[leaveFieldKeys.endDate];
+  const stateStartISODate = state[leaveFieldKeys.startDate];
+  const stateEndISODate = state[leaveFieldKeys.endDate];
+  const userLeaveStartDate = new Date(userLeaveStartISODate).getTime();
+  const userLeaveEndDate = new Date(userLeaveEndISODate).getTime();
+  const stateStartDate = new Date(stateStartISODate).getTime();
+  const stateEndDate = new Date(stateEndISODate).getTime();
+  return (
+    userLeaveStartDate < stateStartDate > userLeaveEndDate ||
+    userLeaveStartDate < stateEndDate > userLeaveEndDate ||
+    userLeaveStartDate === stateStartDate ||
+    userLeaveStartDate === stateEndDate ||
+    userLeaveEndDate === stateStartDate ||
+    userLeaveEndDate === stateEndDate
+  );
+};

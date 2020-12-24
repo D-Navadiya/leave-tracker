@@ -1,5 +1,6 @@
 export const leaveStorageKeys = Object.freeze({
   leaveData: 'leave_data',
+  leaveDataId: 'leave_data_id',
 });
 
 export const leaveTypeKeys = Object.freeze({
@@ -26,6 +27,7 @@ export const leaveFieldKeys = Object.freeze({
   leaveType: 'leave_type',
   startDate: 'start_date',
   endDate: 'end_date',
+  minimumEndDate: 'minimum_end_date',
   reason: 'reason',
 });
 
@@ -43,6 +45,7 @@ export const leaveFields = Object.freeze([
   {
     key: leaveFieldKeys.endDate,
     label: 'End Date',
+    minimumDateKey: leaveFieldKeys.minimumEndDate,
     fieldType: 'date',
   },
   {

@@ -5,6 +5,7 @@ export default Object.freeze({
     [leaveFieldKeys.leaveType]: leaveTypeKeys.casual,
     [leaveFieldKeys.startDate]: new Date(),
     [leaveFieldKeys.endDate]: new Date(),
+    [leaveFieldKeys.minimumEndDate]: new Date(),
     [leaveFieldKeys.reason]: '',
   },
 });

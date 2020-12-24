@@ -19,7 +19,7 @@ const CustomDatePicker = ({
       <Text style={styles.DatePicker_label}>{label}</Text>
       <View style={styles.DatePicker_pickerWrapper}>
         <DatePicker
-          date={value}
+          date={new Date(value)}
           style={styles.DatePicker_picker}
           mode="date"
           textColor={colors.primary}

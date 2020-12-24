@@ -7,6 +7,8 @@ export const authContextValue = Object.freeze({
 export const authStorageKeys = Object.freeze({
   registeredUsers: 'registered_users',
   currentLoggedInUser: 'current_logged_in_user',
+  userId: 'user_id',
+  timestamp: 'timestamp',
 });
 
 export const fieldKeys = Object.freeze({
@@ -24,11 +26,6 @@ export const fieldKeys = Object.freeze({
   confirmPasswordError: 'confirm_password_error',
   companyName: 'company_name',
   companyNameError: 'company_name_error',
-});
-
-export const otherAuthKeys = Object.freeze({
-  id: 'id',
-  timestamp: 'timestamp',
 });
 
 export const fieldLabels = Object.freeze({

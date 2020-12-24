@@ -12,6 +12,7 @@ export default (state, action) => {
       return {
         ...state,
         [leaveFieldKeys.startDate]: fieldValue,
+        [leaveFieldKeys.minimumEndDate]: fieldValue,
       };
     case leaveFieldKeys.endDate:
       return {

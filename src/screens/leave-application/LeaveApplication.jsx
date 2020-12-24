@@ -6,12 +6,12 @@ import ViewWrapper from 'src/components/view-wrapper';
 import leaveApplicationReducer from 'src/reducers/leaveAppliationReducer';
 import Button from 'src/components/button';
 import { leaveFields } from 'src/constants/LeaveConstants';
+import { authStorageKeys } from 'src/constants/Authentication';
 import AppHeader from 'src/components/app-header';
 import ScreenHeader from 'src/components/screen-header';
 import { screenNames, screenTitles } from 'src/constants/Navigation';
 import { useFieldGenerator } from 'src/custom-hooks';
 import { isSubmissionDisabled } from 'src/helpers';
-import { otherAuthKeys } from 'src/constants/Authentication';
 import AuthContext from 'src/context/AuthContext';
 import { storeLeaveData } from 'utils/AsyncStorage';
 import styles from './LeaveApplication.styles';
@@ -26,7 +26,7 @@ const LeaveApplication = () => {
   );
   const { userData } = useContext(AuthContext);
   const onLeaveApplyAction = () =>
-    storeLeaveData(userData[otherAuthKeys.id], state);
+    storeLeaveData(userData[authStorageKeys.userId], state);
   const generatedFields = useFieldGenerator(leaveFields, state, dispatch);
   return (
     <>

@@ -32,22 +32,15 @@ export const useFieldGenerator = (prefixedFields, state, dispatch) =>
         );
       }
       case 'date': {
-        const customFieldProps =
-          (key === leaveFieldKeys.endDate && {
-            minimumDate: state[leaveFieldKeys.startDate],
-          }) ||
-          {};
-
-        const onDateChange = (value) => {
+        const onDateChange = (value) =>
           dispatch({ type: key, fieldValue: value });
-        };
         return (
           <CustomDatePicker
             label={label}
             key={key}
             value={state[key]}
             onDateChange={onDateChange}
-            {...customFieldProps}
+            minimumDate={state[field.minimumDateKey]}
           />
         );
       }
