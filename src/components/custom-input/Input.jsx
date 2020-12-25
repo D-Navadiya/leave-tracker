@@ -1,7 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { TextInput, Text } from 'react-native-paper';
+import ThemingStore from 'utils/ThemingStore';
 import styles from './Input.styles';
+
+const { colors } = ThemingStore.currentTheme;
 
 const Input = ({
   onChangeHandler = () => {},
@@ -19,6 +22,9 @@ const Input = ({
       label={label}
       value={value}
       mode={mode}
+      selectionColor={colors.primary}
+      underlineColor={colors.primary}
+      theme={{ colors: { text: colors.primary } }}
       style={[
         styles.CustomInput_textInput,
         extraSpacedWidth && styles.CustomInput_extraSpacedWidthTextInput,

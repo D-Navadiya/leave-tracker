@@ -7,7 +7,7 @@ const { spacing, fontSizes } = ThemingStore.currentTheme;
 export default styleCreator({
   LeaveApplication_viewWrapper: {
     marginVertical: spacing,
-    height: hp('118%'),
+    height: hp('115%'),
   },
   LeaveApplication_fields: {
     marginBottom: spacing,
