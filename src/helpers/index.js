@@ -53,9 +53,64 @@ export const checkLeaveInterference = (userLeave, state) => {
   return (
     userLeaveStartDate < stateStartDate > userLeaveEndDate ||
     userLeaveStartDate < stateEndDate > userLeaveEndDate ||
+    stateStartDate < userLeaveStartDate > stateEndDate ||
+    stateStartDate < userLeaveEndDate > stateEndDate ||
     userLeaveStartDate === stateStartDate ||
     userLeaveStartDate === stateEndDate ||
     userLeaveEndDate === stateStartDate ||
     userLeaveEndDate === stateEndDate
   );
+};
+
+export const calculateLeaveDays = (start, end) => {
+  const userLeaveStartDate = new Date(start).getTime();
+  const userLeaveEndDate = new Date(end).getTime();
+  const leaveDays =
+    Math.ceil((userLeaveEndDate - userLeaveStartDate) / (1000 * 3600 * 24)) + 1;
+  return leaveDays;
+};
+
+export const consumedLeaveReducer = (acc, userLeave, leaveType) => {
+  if (userLeave[leaveFieldKeys.leaveType] === leaveType) {
+    const userLeaveStartISODate = userLeave[leaveFieldKeys.startDate];
+    const userLeaveEndISODate = userLeave[leaveFieldKeys.endDate];
+    const leaveDays = calculateLeaveDays(
+      userLeaveStartISODate,
+      userLeaveEndISODate,
+    );
+    return acc + leaveDays;
+  }
+  return acc;
+};
+
+export const generateTitleStringOfLeave = (leave) => {
+  const startDate = leave[leaveFieldKeys.startDate];
+  const endDate = leave[leaveFieldKeys.endDate];
+  const leaveDays = calculateLeaveDays(startDate, endDate);
+  const daysString = leaveDays === 1 ? 'day' : 'days';
+  const parsedStartDate = new Date(startDate);
+  const parsedEndDate = new Date(endDate);
+  const leaveStartString = `${parsedStartDate.getDate()}/${
+    parsedStartDate.getMonth() + 1
+  }/${parsedStartDate.getFullYear()}`;
+  const leaveEndString = `${parsedEndDate.getDate()}/${
+    parsedEndDate.getMonth() + 1
+  }/${parsedEndDate.getFullYear()}`;
+  const leaveDateString =
+    leaveDays === 1
+      ? `${leaveStartString}`
+      : `${leaveStartString} - ${leaveEndString}`;
+
+  const titleString = `${leaveDateString} [${leaveDays} ${daysString}]`;
+  return titleString;
+};
+
+export const sortLeaveDataToEarliestUpcoming = (leaveData) => {
+  return leaveData.sort((a, b) => {
+    const startDateA = a[leaveFieldKeys.startDate];
+    const startDateTimestampA = new Date(startDateA).getTime();
+    const startDateB = b[leaveFieldKeys.startDate];
+    const startDateTimestampB = new Date(startDateB).getTime();
+    return startDateTimestampA - startDateTimestampB;
+  });
 };

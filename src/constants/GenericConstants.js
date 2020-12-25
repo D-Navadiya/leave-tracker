@@ -9,4 +9,5 @@ export const buttonConsts = Object.freeze({
 export const generalConsts = Object.freeze({
   emptyString: '',
   emptyArrayString: '[]',
+  emptyObjString: '{}',
 });

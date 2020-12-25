@@ -5,7 +5,6 @@ import { IconButton } from 'react-native-paper';
 import { screenNames, screenTitles } from 'src/constants/Navigation';
 import DashboardScreen from 'src/screens/dashboard';
 import ManageLeavesScreen from 'src/screens/manage-leaves';
-import LeaveInfoScreen from 'src/screens/leave-info';
 import LeaveApplicationScreen from 'src/screens/leave-application';
 import CustomeDrawerContent from 'src/components/custom-drawer-content';
 import ThemingStore from 'utils/ThemingStore';
@@ -60,26 +59,16 @@ const MainDrawerNavigator = () => (
         ),
       }}
     />
-    {/* <Drawer.Screen
+    <Drawer.Screen
       name={screenNames.manageLeaves}
       component={ManageLeavesScreen}
       options={{
         title: screenTitles.manageLeaves,
         drawerIcon: ({ focused }) => (
-          <Icon focused={focused} name="book-edit" />
+          <Icon focused={focused} name="content-save-edit" />
         ),
       }}
     />
-    <Drawer.Screen
-      name={screenNames.leaveInfo}
-      component={LeaveInfoScreen}
-      options={{
-        title: screenTitles.leaveInfo,
-        drawerIcon: ({ focused }) => (
-          <Icon focused={focused} name="information" />
-        ),
-      }}
-    /> */}
   </Drawer.Navigator>
 );
 

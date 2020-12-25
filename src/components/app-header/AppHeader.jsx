@@ -30,14 +30,14 @@ const AppHeader = ({ scene, navigation }) => {
           icon="menu"
           onPress={openDrawer}
           size={iConstants.iconSize}
-          color={colors.primary}
+          color={colors.textAccent}
         />
       ) : (
         <Appbar.Action
           icon="arrow-left"
           onPress={goBack}
           size={iConstants.iconSize}
-          color={colors.primary}
+          color={colors.textAccent}
         />
       )}
       {!isDashboard && (
@@ -58,7 +58,7 @@ const AppHeader = ({ scene, navigation }) => {
           icon="home-outline"
           size={iConstants.iconSize}
           onPress={navigateToDashboard}
-          color={colors.primary}
+          color={colors.textAccent}
         />
       )}
     </Appbar.Header>

@@ -5,12 +5,12 @@ const { colors, fonts, fontSizes } = ThemingStore.currentTheme;
 
 export default styleCreator({
   AppHeader: {
-    backgroundColor: colors.primaryAccent,
+    backgroundColor: colors.primary,
   },
-  AppHeader_dashboardScreen: { backgroundColor: colors.primaryAccent },
+  AppHeader_dashboardScreen: { backgroundColor: colors.primary },
   AppHeader_title: {
     textAlign: 'center',
-    color: colors.secondaryAccent,
+    color: colors.textAccent,
     ...fonts.regular,
     fontSize: fontSizes.medium,
   },

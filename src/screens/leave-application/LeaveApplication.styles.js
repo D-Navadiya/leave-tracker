@@ -2,7 +2,7 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { styleCreator } from 'src/helpers';
 import ThemingStore from 'utils/ThemingStore';
 
-const { fonts, spacing, colors, fontSizes } = ThemingStore.currentTheme;
+const { spacing, fontSizes } = ThemingStore.currentTheme;
 
 export default styleCreator({
   LeaveApplication_viewWrapper: {

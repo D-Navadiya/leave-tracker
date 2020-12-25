@@ -1,6 +1,7 @@
-import React, { useReducer, useContext } from 'react';
-import { View } from 'react-native';
+import React, { useReducer, useContext, useCallback } from 'react';
+import { View, BackHandler } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useFocusEffect } from '@react-navigation/native';
 
 import ViewWrapper from 'src/components/view-wrapper';
 import leaveApplicationReducer from 'src/reducers/leaveAppliationReducer';
@@ -19,14 +20,37 @@ import iConstants from './LeaveApplication.constants';
 
 const Stack = createStackNavigator();
 
-const LeaveApplication = () => {
+const LeaveApplication = ({ navigation }) => {
   const [state, dispatch] = useReducer(
     leaveApplicationReducer,
     iConstants.initialState,
   );
   const { userData } = useContext(AuthContext);
+  const navigateToDashboard = () => navigation.navigate(screenNames.dashboard);
   const onLeaveApplyAction = () =>
-    storeLeaveData(userData[authStorageKeys.userId], state);
+    storeLeaveData(
+      userData[authStorageKeys.userId],
+      state,
+      navigateToDashboard,
+    );
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        navigateToDashboard();
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        dispatch({
+          type: undefined,
+          initialState: iConstants.initialState,
+        });
+      };
+    }, []),
+  );
   const generatedFields = useFieldGenerator(leaveFields, state, dispatch);
   return (
     <>

@@ -2,6 +2,7 @@ import { leaveFieldKeys } from 'src/constants/LeaveConstants';
 
 export default (state, action) => {
   const { type, fieldValue } = action;
+
   switch (type) {
     case leaveFieldKeys.leaveType:
       return {
@@ -25,6 +26,6 @@ export default (state, action) => {
         [leaveFieldKeys.reason]: fieldValue,
       };
     default:
-      return state;
+      return action.initialState || state;
   }
 };

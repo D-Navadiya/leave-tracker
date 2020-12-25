@@ -1,7 +1,4 @@
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import fonts from '../fonts';
 import colors from './ThemeColors';
 

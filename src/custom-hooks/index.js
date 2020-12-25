@@ -3,7 +3,6 @@ import { Alert } from 'react-native';
 import Input from 'src/components/custom-input';
 import RadioField from 'src/components/radio-field';
 import CustomDatePicker from 'src/components/date-picker';
-import { leaveFieldKeys } from 'src/constants/LeaveConstants';
 import { generalConsts } from 'src/constants/GenericConstants';
 
 export const useFieldGenerator = (prefixedFields, state, dispatch) =>

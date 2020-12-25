@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
+import isEmpty from 'lodash/isEmpty';
+
 import { getCurrentLoggedInUser } from 'utils/AsyncStorage';
 import ThemingStore from 'utils/ThemingStore';
 import AuthContext from 'src/context/AuthContext';
@@ -21,7 +23,7 @@ const App = () => {
 
   const getLoggedIn = async () => {
     const userData = await getCurrentLoggedInUser();
-    if (userData) {
+    if (!isEmpty(userData)) {
       setAuth((prevState) => ({ ...prevState, userData }));
       auth.changeLoggedIn(true);
     }
@@ -31,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     getLoggedIn();
-  }, []);
+  }, [auth.loggedIn]);
 
   return (
     <PaperProvider {...commonProps}>
