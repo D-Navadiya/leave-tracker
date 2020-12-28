@@ -8,4 +8,6 @@ export default Object.freeze({
     [leaveFieldKeys.minimumEndDate]: new Date(),
     [leaveFieldKeys.reason]: '',
   },
+  leaveApplicationScreenTitleText: 'Leave Application',
+  applyBtnLabel: 'Apply',
 });

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Appbar } from 'react-native-paper';
 import { Image } from 'react-native';
+
 import { screenNames } from 'src/constants/Navigation';
+import { icons } from 'src/constants/GenericConstants';
 import images from 'assets/images';
 import ThemingStore from 'utils/ThemingStore';
 import styles from './AppHeader.styles';
-import iConstants from './AppHeader.constants';
 
-const { colors } = ThemingStore.currentTheme;
+const { colors, iconSizes } = ThemingStore.currentTheme;
 
 const AppHeader = ({ scene, navigation }) => {
   const { options } = scene.descriptor;
@@ -27,16 +28,16 @@ const AppHeader = ({ scene, navigation }) => {
     >
       {isDashboard ? (
         <Appbar.Action
-          icon="menu"
+          icon={icons.menu}
           onPress={openDrawer}
-          size={iConstants.iconSize}
+          size={iconSizes.small}
           color={colors.textAccent}
         />
       ) : (
         <Appbar.Action
-          icon="arrow-left"
+          icon={icons.arrowLeft}
           onPress={goBack}
-          size={iConstants.iconSize}
+          size={iconSizes.small}
           color={colors.textAccent}
         />
       )}
@@ -55,8 +56,8 @@ const AppHeader = ({ scene, navigation }) => {
       )}
       {!isDashboard && (
         <Appbar.Action
-          icon="home-outline"
-          size={iConstants.iconSize}
+          icon={icons.homeOutline}
+          size={iconSizes.small}
           onPress={navigateToDashboard}
           color={colors.textAccent}
         />

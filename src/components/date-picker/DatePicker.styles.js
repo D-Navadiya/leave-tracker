@@ -17,7 +17,7 @@ export default styleCreator({
     fontSize: fontSizes.medium,
     textAlign: 'center',
     color: colors.secondaryAccent,
-    ...fonts.regular,
+    ...fonts.bold,
     marginBottom: spacing,
   },
   DatePicker_pickerWrapper: {

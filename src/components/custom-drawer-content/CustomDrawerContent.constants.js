@@ -1,3 +1,3 @@
 export default Object.freeze({
-  indicatorSize: 50,
+  logout: 'Logout',
 });

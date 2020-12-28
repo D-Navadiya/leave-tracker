@@ -14,7 +14,7 @@ export default styleCreator({
     borderBottomColor: convertHexToRgbA(colors.primary, 20),
   },
   DrawerNavigator_labelStyle: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.large,
     marginLeft: -spacing,
     color: colors.primary,
     ...fonts.regular,

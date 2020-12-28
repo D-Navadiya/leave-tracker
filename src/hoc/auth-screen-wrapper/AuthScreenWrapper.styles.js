@@ -2,6 +2,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+
 import { styleCreator } from 'src/helpers';
 import ThemingStore from 'utils/ThemingStore';
 
@@ -25,7 +26,7 @@ export default styleCreator({
     justifyContent: 'center',
   },
   AuthWrapper_regLoginNavigationText: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.medium,
     color: colors.secondaryAccent,
   },
   AuthWrapper_regLoginNavLink: {

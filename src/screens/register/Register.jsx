@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import AuthViewWrapperHoc from 'src/hoc/auth-screen-wrapper';
 import Button from 'src/components/button';
-import registerReducer from 'src/reducers/registerReducer';
+import RegisterReducer from 'src/reducers/RegisterReducer';
 import { registerFields } from 'src/constants/Authentication';
 import { useFieldGenerator } from 'src/custom-hooks';
 import { registerUser } from 'utils/AsyncStorage';
@@ -14,7 +14,7 @@ import styles from './Register.styles';
 
 const Register = ({ navigation, route }) => {
   const [state, dispatch] = useReducer(
-    registerReducer,
+    RegisterReducer,
     iConstants.initialState,
   );
   const navigateToLogin = () => navigation.navigate(screenNames.login);
@@ -28,7 +28,6 @@ const Register = ({ navigation, route }) => {
         </View>
         <Button
           label={iConstants.registerBtnText}
-          labelSn={styles.Register_btnLabel}
           action={onRegisterAction}
           disabled={isSubmissionDisabled(registerFields, state)}
         />

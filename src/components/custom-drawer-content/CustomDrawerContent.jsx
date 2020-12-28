@@ -7,6 +7,7 @@ import {
 import AuthContext from 'src/context/AuthContext';
 import { logoutUser } from 'utils/AsyncStorage';
 import Button from 'src/components/button';
+import iConstants from './CustomDrawerContent.constants';
 import DrawerHeader from '../drawer-header';
 import styles from './CustomDrawerContent.styles';
 
@@ -18,7 +19,7 @@ const CustomDrawerContent = (props) => {
       <DrawerHeader {...props} />
       <DrawerItemList {...props} />
       <Button
-        label="Logout"
+        label={iConstants.logout}
         action={onLogoutAction}
         sn={styles.CustomDrawerContent_logoutButton}
       />

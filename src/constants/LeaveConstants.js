@@ -9,18 +9,28 @@ export const leaveTypeKeys = Object.freeze({
   others: 'others',
 });
 
-export const leaveTypes = Object.freeze([
-  {
+export const leaveTypeData = Object.freeze({
+  [leaveTypeKeys.casual]: {
     key: leaveTypeKeys.casual,
     name: 'Casual Leaves',
     count: 10,
   },
-  {
+  [leaveTypeKeys.ebl]: {
     key: leaveTypeKeys.ebl,
     name: 'EBL',
     count: 4,
   },
-  { key: leaveTypeKeys.others, name: 'Others', count: 10 },
+  [leaveTypeKeys.others]: {
+    key: leaveTypeKeys.others,
+    name: 'Others',
+    count: 10,
+  },
+});
+
+export const leaveTypes = Object.freeze([
+  leaveTypeData[leaveTypeKeys.casual],
+  leaveTypeData[leaveTypeKeys.ebl],
+  leaveTypeData[leaveTypeKeys.others],
 ]);
 
 export const leaveFieldKeys = Object.freeze({

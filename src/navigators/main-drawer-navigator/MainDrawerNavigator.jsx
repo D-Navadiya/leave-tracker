@@ -3,22 +3,22 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { IconButton } from 'react-native-paper';
 
 import { screenNames, screenTitles } from 'src/constants/Navigation';
+import { icons } from 'src/constants/GenericConstants';
 import DashboardScreen from 'src/screens/dashboard';
 import ManageLeavesScreen from 'src/screens/manage-leaves';
 import LeaveApplicationScreen from 'src/screens/leave-application';
 import CustomeDrawerContent from 'src/components/custom-drawer-content';
 import ThemingStore from 'utils/ThemingStore';
-import iConstants from './MainDrawerNavigator.constants';
 import styles from './MainDrawerNavigator.styles';
 
 const Drawer = createDrawerNavigator();
 
-const { colors } = ThemingStore.currentTheme;
+const { colors, iconSizes } = ThemingStore.currentTheme;
 
 const Icon = ({ name, focused }) => (
   <IconButton
     icon={name}
-    size={iConstants.iconSize}
+    size={iconSizes.medium}
     color={focused ? colors.primary : colors.primaryAccent}
     style={[
       styles.DrawerNavigator_drawerIcon,
@@ -45,7 +45,7 @@ const MainDrawerNavigator = () => (
       options={{
         title: screenTitles.dashboard,
         drawerIcon: ({ focused }) => (
-          <Icon focused={focused} name="view-dashboard" />
+          <Icon focused={focused} name={icons.viewDashboard} />
         ),
       }}
     />
@@ -55,7 +55,7 @@ const MainDrawerNavigator = () => (
       options={{
         title: screenTitles.leaveApplication,
         drawerIcon: ({ focused }) => (
-          <Icon focused={focused} name="application" />
+          <Icon focused={focused} name={icons.application} />
         ),
       }}
     />
@@ -65,7 +65,7 @@ const MainDrawerNavigator = () => (
       options={{
         title: screenTitles.manageLeaves,
         drawerIcon: ({ focused }) => (
-          <Icon focused={focused} name="content-save-edit" />
+          <Icon focused={focused} name={icons.contentSaveEdit} />
         ),
       }}
     />

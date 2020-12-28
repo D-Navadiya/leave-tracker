@@ -15,7 +15,7 @@ export default styleCreator({
     ...fonts.bold,
   },
   RadioField_radioBtnLabel: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.medium,
     color: colors.primary,
     ...fonts.regular,
   },

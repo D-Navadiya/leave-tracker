@@ -1,8 +1,9 @@
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import { styleCreator } from 'src/helpers';
 import ThemingStore from 'utils/ThemingStore';
 
-const { fonts, colors } = ThemingStore.currentTheme;
+const { fonts, colors, fontSizes } = ThemingStore.currentTheme;
 
 export default styleCreator({
   ScreenHeader: {
@@ -12,9 +13,8 @@ export default styleCreator({
   },
   ScreenHeader_title: {
     textAlign: 'center',
-    color: colors.text,
-    fontSize: 18,
-    textTransform: 'uppercase',
-    ...fonts.bold,
+    color: colors.background,
+    fontSize: fontSizes.large,
+    ...fonts.regular,
   },
 });

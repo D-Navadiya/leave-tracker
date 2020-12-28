@@ -2,8 +2,8 @@ import React, { useCallback, useState, useContext } from 'react';
 import { BackHandler, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { List, IconButton, Text } from 'react-native-paper';
-
 import { createStackNavigator } from '@react-navigation/stack';
+
 import CustomDivider from 'src/components/custom-divider';
 import AppHeader from 'src/components/app-header';
 import AuthContext from 'src/context/AuthContext';
@@ -11,20 +11,22 @@ import LoaderViewWrapper from 'src/components/loader-view-wrapper';
 import ViewWrapper from 'src/components/view-wrapper/ViewWrapper';
 import { getLeaveDataByUserId, removeLeaveItem } from 'utils/AsyncStorage';
 import { screenNames, screenTitles } from 'src/constants/Navigation';
-import { authStorageKeys } from 'src/constants/Authentication';
-import { generateTitleStringOfLeave } from 'src/helpers';
 import { leaveFieldKeys, leaveStorageKeys } from 'src/constants/LeaveConstants';
+import { authStorageKeys } from 'src/constants/Authentication';
+import { icons } from 'src/constants/GenericConstants';
+import { generateTitleStringOfLeave } from 'src/helpers';
 import ThemingStore from 'utils/ThemingStore';
+import iConstants from './ManageLeaves.constants';
 import styles from './ManageLeaves.styles';
 
-const { colors } = ThemingStore.currentTheme;
+const { colors, iconSizes } = ThemingStore.currentTheme;
 
 const Stack = createStackNavigator();
 
 const NoLeavesView = () => (
   <View style={styles.ManageLeaves_noLeavesView}>
     <Text style={styles.ManageLeaves_noLeavesText}>
-      You have not applied for any leaves yet.
+      {iConstants.noDataAvailableText}
     </Text>
   </View>
 );
@@ -76,10 +78,10 @@ const ManageLeaves = ({ navigation }) => {
                   descriptionStyle={styles.ManageLeaves_description}
                   right={() => (
                     <IconButton
-                      icon="delete-circle"
+                      icon={icons.deleteCircle}
                       color={colors.danger}
                       style={[styles.ManageLeaves_deleteReminderIcon]}
-                      size={50}
+                      size={iconSizes.huge}
                       onPress={() =>
                         onRemoveLeaveItem(leave[leaveStorageKeys.leaveDataId])
                       }

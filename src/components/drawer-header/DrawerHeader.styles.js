@@ -16,12 +16,12 @@ export default styleCreator({
     left: spacing / 2,
   },
   DrawerHeader_loggedInAsText: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.large,
     ...fonts.regular,
     color: colors.primary,
   },
   DrawerHeader_nameText: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.huge,
     ...fonts.bold,
     color: colors.secondaryAccent,
     marginTop: 10,

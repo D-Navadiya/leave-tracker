@@ -1,5 +1,6 @@
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import pick from 'lodash/pick';
+
 import {
   registerFields,
   authStorageKeys,
@@ -10,6 +11,7 @@ import {
   leaveFieldKeys,
   leaveStorageKeys,
   leaveTypeKeys,
+  leaveTypeData,
 } from 'src/constants/LeaveConstants';
 import { useAlert } from 'src/custom-hooks';
 import {
@@ -175,9 +177,9 @@ export const getLeaveDataByUserId = async (userId) => {
 
 const getRemainingLeaveObj = async (userLeaveData) => {
   const remainingLeaveObj = {
-    [leaveTypeKeys.casual]: 10,
-    [leaveTypeKeys.ebl]: 4,
-    [leaveTypeKeys.others]: 10,
+    [leaveTypeKeys.casual]: leaveTypeData[leaveTypeKeys.casual].count,
+    [leaveTypeKeys.ebl]: leaveTypeData[leaveTypeKeys.ebl].count,
+    [leaveTypeKeys.others]: leaveTypeData[leaveTypeKeys.others].count,
   };
   if (userLeaveData.length === 0) {
     return remainingLeaveObj;

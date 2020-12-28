@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Modal, ActivityIndicator } from 'react-native';
+
 import ThemingStore from 'utils/ThemingStore';
-import iConstants from './Loader.constants';
 import styles from './Loader.styles';
 
-const { colors } = ThemingStore.currentTheme;
+const { colors, iconSizes } = ThemingStore.currentTheme;
 
 const Loader = ({ loading }) => {
   return (
@@ -14,7 +14,7 @@ const Loader = ({ loading }) => {
           <ActivityIndicator
             animating={loading}
             color={colors.primary}
-            size={iConstants.indicatorSize}
+            size={iconSizes.huge}
           />
         </View>
       </View>

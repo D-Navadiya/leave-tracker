@@ -5,12 +5,13 @@ const { fonts, colors, fontSizes } = ThemingStore.currentTheme;
 
 export default styleCreator({
   ManageLeaves_title: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.large,
     color: colors.primary,
     ...fonts.regular,
   },
   ManageLeaves_description: {
-    fontSize: fontSizes.tiny,
+    fontSize: fontSizes.medium,
+    marginTop: 5,
     color: colors.secondaryAccent,
     ...fonts.regular,
   },
@@ -22,7 +23,8 @@ export default styleCreator({
   },
   ManageLeaves_noLeavesText: {
     textAlign: 'center',
-    fontSize: fontSizes.small,
+    color: colors.primary,
+    fontSize: fontSizes.medium,
     ...fonts.regular,
   },
 });

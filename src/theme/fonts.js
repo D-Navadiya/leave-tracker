@@ -8,7 +8,7 @@ const fontConfig = {
     },
     bold: {
       fontFamily: 'PTSans-Bold',
-      fontWeight: 'normal',
+      fontWeight: 'bold',
     },
     italic: {
       fontFamily: 'PTSans-Italic',

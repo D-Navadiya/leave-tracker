@@ -1,5 +1,6 @@
 import React from 'react';
 import { Appbar } from 'react-native-paper';
+
 import styles from './ScreenHeader.styles';
 
 const ScreenHeader = ({ title }) => {

@@ -2,10 +2,10 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { styleCreator } from 'src/helpers';
 import ThemingStore from 'utils/ThemingStore';
 
-const { colors, spacedWidth } = ThemingStore.currentTheme;
+const { colors, spacedWidth, fontSizes } = ThemingStore.currentTheme;
 
 export default styleCreator({
-  GenericButton_label: { fontSize: 15 },
+  GenericButton_label: { fontSize: fontSizes.medium },
   GenericButton_label__primaryInverted: {
     color: colors.text,
   },

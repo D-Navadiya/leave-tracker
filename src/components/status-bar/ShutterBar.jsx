@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+
 import FocusAwareStatusBar from './focus-aware-statusbar';
 
 const ShutterBar = ({ statusBarProps, isFocusAware = false }) =>

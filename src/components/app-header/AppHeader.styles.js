@@ -12,7 +12,7 @@ export default styleCreator({
     textAlign: 'center',
     color: colors.textAccent,
     ...fonts.regular,
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.huge,
   },
   AppHeader_imageLogo: {
     height: 75,

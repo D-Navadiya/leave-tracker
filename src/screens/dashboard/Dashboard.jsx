@@ -12,7 +12,8 @@ import AuthContext from 'src/context/AuthContext';
 import { getRemainingLeaveObjById } from 'utils/AsyncStorage';
 import { screenNames, screenTitles } from 'src/constants/Navigation';
 import { authStorageKeys } from 'src/constants/Authentication';
-import { leaveTypeKeys } from 'src/constants/LeaveConstants';
+import { leaveTypeKeys, leaveTypeData } from 'src/constants/LeaveConstants';
+import iConstants from './Dashboard.constants';
 import styles from './Dashboard.styles';
 
 const Stack = createStackNavigator();
@@ -24,13 +25,13 @@ const InfoView = ({ title, value }) => (
   </View>
 );
 
-const Dashboard = ({ navigation }) => {
+const Dashboard = () => {
   const { userData } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [remainingLeaveObj, setLeaveObj] = useState({
-    [leaveTypeKeys.casual]: 10,
-    [leaveTypeKeys.ebl]: 4,
-    [leaveTypeKeys.others]: 10,
+    [leaveTypeKeys.casual]: leaveTypeData[leaveTypeKeys.casual].count,
+    [leaveTypeKeys.ebl]: leaveTypeData[leaveTypeKeys.ebl].count,
+    [leaveTypeKeys.others]: leaveTypeData[leaveTypeKeys.others].count,
   });
   const getRemainingLeaveObj = async () => {
     setLoading(true);
@@ -55,10 +56,12 @@ const Dashboard = ({ navigation }) => {
     }, []),
   );
   const appliedLeaves =
-    10 -
+    leaveTypeData[leaveTypeKeys.casual].count -
     remainingLeaveObj[leaveTypeKeys.casual] +
-    (4 - remainingLeaveObj[leaveTypeKeys.ebl]) +
-    (10 - remainingLeaveObj[leaveTypeKeys.others]);
+    (leaveTypeData[leaveTypeKeys.ebl].count -
+      remainingLeaveObj[leaveTypeKeys.ebl]) +
+    (leaveTypeData[leaveTypeKeys.others].count -
+      remainingLeaveObj[leaveTypeKeys.others]);
   const availableLeaves =
     remainingLeaveObj[leaveTypeKeys.casual] +
     remainingLeaveObj[leaveTypeKeys.ebl] +
@@ -67,11 +70,14 @@ const Dashboard = ({ navigation }) => {
   return (
     <LoaderViewWrapper loading={loading}>
       <ViewWrapper sn={styles.Dashboard_viewWrapper}>
-        <InfoView title="Total Leaves" value={totalLeaves} />
+        <InfoView title={iConstants.totalLeavesText} value={totalLeaves} />
         <CustomDivider sn={styles.Dashboard_divider} />
-        <InfoView title="Applied Leaves" value={appliedLeaves} />
+        <InfoView title={iConstants.appliedLeavesText} value={appliedLeaves} />
         <CustomDivider sn={styles.Dashboard_divider} />
-        <InfoView title="Available Leaves" value={availableLeaves} />
+        <InfoView
+          title={iConstants.availableLeavesText}
+          value={availableLeaves}
+        />
       </ViewWrapper>
     </LoaderViewWrapper>
   );

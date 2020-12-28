@@ -1,4 +1,7 @@
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import fonts from '../fonts';
 import colors from './ThemeColors';
 
@@ -8,11 +11,18 @@ const customRegularTheme = {
   spacedWidth: wp('90%'),
   // roundness: hp('5%'),
   fontSizes: {
-    tiny: 14,
-    small: 18,
-    medium: 22,
-    large: 28,
-    huge: 34,
+    tiny: hp('1%'),
+    small: hp('1.5%'),
+    medium: hp('2%'),
+    large: hp('2.5%'),
+    huge: hp('3%'),
+    humongous: hp('4%'),
+  },
+  iconSizes: {
+    small: hp('3.5%'),
+    medium: hp('4%'),
+    large: hp('4.5%'),
+    huge: hp('5.5%'),
   },
   ...fonts,
   dark: false,

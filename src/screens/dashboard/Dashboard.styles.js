@@ -23,14 +23,14 @@ export default styleCreator({
   },
   Dashboard_titleText: {
     textAlign: 'center',
-    fontSize: fontSizes.large,
+    fontSize: fontSizes.huge,
     marginBottom: spacing,
     ...fonts.regular,
     color: colors.primary,
   },
   Dashboard_valueText: {
     textAlign: 'center',
-    fontSize: fontSizes.huge,
+    fontSize: fontSizes.humongous,
     ...fonts.bold,
     color: colors.secondary,
   },

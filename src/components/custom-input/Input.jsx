@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { TextInput, Text } from 'react-native-paper';
+
 import ThemingStore from 'utils/ThemingStore';
 import styles from './Input.styles';
 
