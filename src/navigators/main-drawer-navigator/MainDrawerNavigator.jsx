@@ -2,7 +2,11 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { IconButton } from 'react-native-paper';
 
-import { screenNames, screenTitles } from 'src/constants/Navigation';
+import {
+  screenNames,
+  screenTitles,
+  stackNames,
+} from 'src/constants/Navigation';
 import { icons } from 'src/constants/GenericConstants';
 import DashboardScreen from 'src/screens/dashboard';
 import ManageLeavesScreen from 'src/screens/manage-leaves';
@@ -29,7 +33,7 @@ const Icon = ({ name, focused }) => (
 
 const MainDrawerNavigator = () => (
   <Drawer.Navigator
-    initialRouteName={screenNames.dashboard}
+    initialRouteName={stackNames.dashboard}
     drawerContent={(props) => <CustomeDrawerContent {...props} />}
     drawerStyle={styles.DrawerNavigator_drawer}
     drawerContentOptions={{
@@ -40,7 +44,7 @@ const MainDrawerNavigator = () => (
     }}
   >
     <Drawer.Screen
-      name={screenNames.dashboard}
+      name={stackNames.dashboard}
       component={DashboardScreen}
       options={{
         title: screenTitles.dashboard,
@@ -50,7 +54,7 @@ const MainDrawerNavigator = () => (
       }}
     />
     <Drawer.Screen
-      name={screenNames.leaveApplication}
+      name={stackNames.leaveApplication}
       component={LeaveApplicationScreen}
       options={{
         title: screenTitles.leaveApplication,
@@ -60,7 +64,7 @@ const MainDrawerNavigator = () => (
       }}
     />
     <Drawer.Screen
-      name={screenNames.manageLeaves}
+      name={stackNames.manageLeaves}
       component={ManageLeavesScreen}
       options={{
         title: screenTitles.manageLeaves,

@@ -151,9 +151,8 @@ export const storeLeaveData = async (userId, state, navigateFn) => {
   if (!passed) {
     return false;
   }
-  const { getItem, setItem } = useAsyncStorage(leaveStorageKeys.leaveData);
-  let storedLeaveData = (await getItem()) ?? generalConsts.emptyArrayString;
-  storedLeaveData = JSON.parse(storedLeaveData);
+
+  const storedLeaveData = await getLeaveData();
   const newLeaveData = {
     ...state,
     [authStorageKeys.userId]: userId,
@@ -161,18 +160,39 @@ export const storeLeaveData = async (userId, state, navigateFn) => {
   };
   delete newLeaveData[leaveFieldKeys.minimumEndDate];
   storedLeaveData.push(newLeaveData);
-  await setItem(JSON.stringify(storedLeaveData));
-  navigateFn();
+  await setLeaveData(storedLeaveData);
+  if (navigateFn && typeof navigateFn === 'function') {
+    navigateFn();
+  }
   return true;
 };
 
-export const getLeaveDataByUserId = async (userId) => {
+const getLeaveData = async () => {
   const { getItem } = useAsyncStorage(leaveStorageKeys.leaveData);
   let storedLeaveData = (await getItem()) ?? generalConsts.emptyArrayString;
   storedLeaveData = JSON.parse(storedLeaveData);
-  return sortLeaveDataToEarliestUpcoming(
-    storedLeaveData.filter((leave) => leave[authStorageKeys.userId] === userId),
+  return storedLeaveData;
+};
+
+const setLeaveData = async (dataArray) => {
+  const { setItem } = useAsyncStorage(leaveStorageKeys.leaveData);
+  await setItem(JSON.stringify(dataArray));
+};
+
+export const getLeaveDataByUserId = async (userId) => {
+  const storedLeaveData = await getLeaveData();
+  const filteredLeaveDataByUserId = storedLeaveData.filter(
+    (leave) => leave[authStorageKeys.userId] === userId,
   );
+  return sortLeaveDataToEarliestUpcoming(filteredLeaveDataByUserId);
+};
+
+export const getSpecificLeaveByLeaveId = async (leaveId) => {
+  const storedLeaveData = await getLeaveData();
+  const specificLeaveData = storedLeaveData.find(
+    (leave) => leave[leaveStorageKeys.leaveDataId] === leaveId,
+  );
+  return specificLeaveData;
 };
 
 const getRemainingLeaveObj = async (userLeaveData) => {
@@ -233,5 +253,24 @@ export const removeLeaveItem = async (leaveDataId, refetchFn) => {
     (leave) => leave[leaveStorageKeys.leaveDataId] !== leaveDataId,
   );
   await setItem(JSON.stringify(updatedLeaveItems));
-  refetchFn();
+  if (refetchFn && typeof refetchFn === 'function') {
+    refetchFn();
+  }
+};
+
+export const updateLeaveItem = async (leaveId, state, navigateFn) => {
+  const storedLeaveData = await getLeaveData();
+  const foundIndex = storedLeaveData.findIndex(
+    (leave) => leave[leaveStorageKeys.leaveDataId] === leaveId,
+  );
+  const stateData = { ...state };
+  delete stateData[leaveFieldKeys.minimumEndDate];
+  storedLeaveData[foundIndex] = {
+    ...storedLeaveData[foundIndex],
+    ...stateData,
+  };
+  await setLeaveData(storedLeaveData);
+  if (navigateFn && typeof navigateFn === 'function') {
+    navigateFn();
+  }
 };

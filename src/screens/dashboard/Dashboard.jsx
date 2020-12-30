@@ -27,12 +27,15 @@ const InfoView = ({ title, value }) => (
 
 const Dashboard = () => {
   const { userData } = useContext(AuthContext);
+
   const [loading, setLoading] = useState(true);
+
   const [remainingLeaveObj, setLeaveObj] = useState({
     [leaveTypeKeys.casual]: leaveTypeData[leaveTypeKeys.casual].count,
     [leaveTypeKeys.ebl]: leaveTypeData[leaveTypeKeys.ebl].count,
     [leaveTypeKeys.others]: leaveTypeData[leaveTypeKeys.others].count,
   });
+
   const getRemainingLeaveObj = async () => {
     setLoading(true);
     const leaveObj = await getRemainingLeaveObjById(
@@ -41,6 +44,7 @@ const Dashboard = () => {
     setLeaveObj(leaveObj);
     setLoading(false);
   };
+
   useFocusEffect(
     useCallback(() => {
       getRemainingLeaveObj();
@@ -53,7 +57,7 @@ const Dashboard = () => {
 
       return () =>
         BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-    }, []),
+    }, [userData]),
   );
   const appliedLeaves =
     leaveTypeData[leaveTypeKeys.casual].count -

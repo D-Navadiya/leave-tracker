@@ -2,7 +2,7 @@ import React from 'react';
 import { Appbar } from 'react-native-paper';
 import { Image } from 'react-native';
 
-import { screenNames } from 'src/constants/Navigation';
+import { screenNames, stackNames } from 'src/constants/Navigation';
 import { icons } from 'src/constants/GenericConstants';
 import images from 'assets/images';
 import ThemingStore from 'utils/ThemingStore';
@@ -16,7 +16,10 @@ const AppHeader = ({ scene, navigation }) => {
   const headerTitle = options.title || '';
   const isDashboard = routeName === screenNames.dashboard;
   const openDrawer = () => navigation.openDrawer();
-  const navigateToDashboard = () => navigation.navigate(screenNames.dashboard);
+  const navigateToDashboard = () =>
+    navigation.navigate(stackNames.dashboard, {
+      screen: screenNames.dashboard,
+    });
   const goBack = () => navigation.goBack();
 
   return (

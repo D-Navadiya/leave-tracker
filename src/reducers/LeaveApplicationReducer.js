@@ -25,6 +25,15 @@ export default (state, action) => {
         ...state,
         [leaveFieldKeys.reason]: fieldValue,
       };
+    case 'EDIT_ITEM': {
+      const { editItem } = action;
+      return {
+        [leaveFieldKeys.leaveType]: editItem[leaveFieldKeys.leaveType],
+        [leaveFieldKeys.startDate]: editItem[leaveFieldKeys.startDate],
+        [leaveFieldKeys.endDate]: editItem[leaveFieldKeys.endDate],
+        [leaveFieldKeys.reason]: editItem[leaveFieldKeys.reason],
+      };
+    }
     default:
       return action.initialState || state;
   }

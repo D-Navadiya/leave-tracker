@@ -11,11 +11,10 @@ export default styleCreator({
   },
   ManageLeaves_description: {
     fontSize: fontSizes.medium,
-    marginTop: 5,
     color: colors.secondaryAccent,
     ...fonts.regular,
   },
-  ManageLeaves_deleteReminderIcon: { opacity: 0.55, marginRight: -20 },
+  ManageLeaves_deleteReminderIcon: { opacity: 0.55 },
   ManageLeaves_noLeavesView: {
     justifyContent: 'center',
     alignItems: 'center',
